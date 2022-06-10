@@ -17,6 +17,4 @@ func main() {
   } else {
     fmt.Println("50 미만")
   }
-
-  
 }

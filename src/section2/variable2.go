@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-
+  // 여러개 선언
   var (
     name string = "machine"
     height int32

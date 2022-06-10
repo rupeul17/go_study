@@ -18,5 +18,14 @@ func main() {
   } else {
     fmt.Println("70 미만")
   }
-  
+
+  // 에러 발생1
+  /*
+  if a >= 65 {
+    fmt.Println("65 이상")
+  } else
+  {
+    fmt.Println("65 미만")
+  }
+  */
 }
