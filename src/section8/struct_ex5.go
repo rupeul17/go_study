@@ -13,15 +13,17 @@ func (e Employee) Calculate() float64 {
 	return e.salary + e.bonus
 }
 
+func (e Executives) Calculate() float64 {
+	return e.salary + e.bonus + e.specialBonus
+}
+
 type Executives struct {
 	Employee     // is a 관계
 	specialBonus float64
 }
 
 func main() {
-	// 구조체 임베디드 패턴
-	// 다른 관점으로 메소드를 재 사용하는 장점 제공
-	// 상속을 허용하지 않는 go 언어에서 메소드 상속 활용을 위한 패턴
+	// 구조체 임베디드 메소드 오버라이딩 패턴
 
 	// 예제1
 	// 직원
@@ -35,5 +37,6 @@ func main() {
 	fmt.Println("ex1 : ", int(ep2.Calculate()))
 
 	// Employee 구조체 통해서 메소드 호출
-	fmt.Println("ex2 : ", int(ex.Calculate()+ex.specialBonus))
+	fmt.Println("ex2 : ", int(ex.Calculate())) // 오버라이딩
+	fmt.Println("ex2 : ", int(ex.Employee.Calculate()+ex.specialBonus))
 }
