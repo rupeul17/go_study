@@ -96,7 +96,13 @@ func Priority(queue *Queue) Job {
 
 	pri_job_scan := queue.First
 
+	/*
+		queue 에 있는 job을 순서대로 탐색한다.
+	*/
 	for pri_job_scan != nil {
+		/*
+			service time이 가장 긴 우선순위 job을 찾는다.
+		*/
 		if time > pri_job_scan.Service_Time {
 			time = pri_job_scan.Service_Time
 			pri_name = pri_job_scan.Name
@@ -112,11 +118,23 @@ func Priority(queue *Queue) Job {
 	pri_job_scan = queue.First
 	var back *Job = nil
 
+	/*
+		queue 에 있는 job을 순서대로 탐색한다.
+	*/
 	for pri_job_scan != nil {
+		/*
+			우선순위 job을 찾으면
+		*/
 		if pri_name == pri_job_scan.Name {
 			if back == nil {
+				/*
+					back이 없으면 queue의 첫번째를 back을 만든다.
+				*/
 				queue.First = queue.First.Next
 			} else {
+				/*
+					back이 있으면
+				*/
 				back.Next = pri_job_scan.Next
 			}
 
@@ -127,6 +145,9 @@ func Priority(queue *Queue) Job {
 		pri_job_scan = pri_job_scan.Next
 	}
 
+	/*
+
+	 */
 	if pri_job_scan.Next == nil {
 		queue.Last = back
 	}
